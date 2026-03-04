@@ -99,25 +99,7 @@ const Q = [
   { id:86, ch:4, tp:"Pointeurs", q:"Retourner l'adresse d'une variable locale ?", o:["OK","Dangling pointer (référence fantôme)","OK avec `static`","Seulement avec `malloc`"], c:1, ex:"→ pointeur **invalide** car la pile est dépilée au `return`." },
   { id:87, ch:4, tp:"Pointeurs", q:"`NULL` représente :", o:["L'adresse 0","Un pointeur vers rien","Erreur de compilation","Fin d'un tableau"], c:1, ex:"`NULL` = pointeur qui **ne pointe vers rien**." },
   { id:88, ch:4, tp:"Mémoire", q:"`static` pour une variable locale signifie :", o:["Constante","Persiste entre les appels","Sur le tas","Publique"], c:1, ex:"Variable `static` → **persiste** entre les appels de fonction." },
-  // CH5 — Préprocesseur, E/S, Unix
-  { id:89, ch:5, tp:"Préprocesseur", q:"`#define` crée :", o:["Une variable","Une constante globale","Une macro (remplacement de texte)","Un type"], c:2, ex:"`#define` = **macro** : remplacement textuel avant compilation." },
-  { id:90, ch:5, tp:"Préprocesseur", q:"Pourquoi les parenthèses dans `#define CARRE(X) ((X)*(X))` ?", o:["Lisibilité","Éviter des erreurs de priorité","Obligatoire","Performance"], c:1, ex:"Sans parenthèses : `CARRE(x+1)` → `x+1*x+1` au lieu de `(x+1)*(x+1)` !" },
-  { id:91, ch:5, tp:"Préprocesseur", q:"Une macro est-elle une fonction ?", o:["Oui","Non, remplacement textuel","Oui mais plus rapide","Ça dépend"], c:1, ex:"Macro = **substitution de texte**, pas d'appel de fonction." },
-  { id:92, ch:5, tp:"Préprocesseur", q:"`__LINE__` est :", o:["Le numéro de la ligne courante","Le nombre de lignes","Un pointeur","Le numéro de version"], c:0, ex:"Macro prédéfinie : **numéro de ligne** dans le source." },
-  { id:93, ch:5, tp:"Fichiers", q:"Ouvrir un fichier en lecture :", o:["`fopen(nom, \"w\")`","`fopen(nom, \"r\")`","`fopen(nom, \"a\")`","`open(nom)`"], c:1, ex:"`fopen` avec mode `\"r\"` (read)." },
-  { id:94, ch:5, tp:"Fichiers", q:"Que fait `fclose(f)` ?", o:["Supprime le fichier","Ferme le descripteur","Vide le fichier","Renomme"], c:1, ex:"`fclose` **ferme** le fichier." },
-  { id:95, ch:5, tp:"Fichiers", q:"`fprintf` écrit :", o:["Sur stdout uniquement","Dans un fichier avec formatage","Dans une chaîne","Sur stdin"], c:1, ex:"`fprintf(fichier, ...)` = `printf` vers un `FILE*`." },
-  { id:96, ch:5, tp:"Fichiers", q:"`sprintf` écrit dans :", o:["Un fichier","stdout","Une chaîne de caractères","stdin"], c:2, ex:"`sprintf` → résultat formaté dans un **buffer** (chaîne)." },
-  { id:97, ch:5, tp:"Unix", q:"`stdin`, `stdout`, `stderr` sont :", o:["Des fonctions","Des `FILE*` prédéfinis","Des types","Des macros"], c:1, ex:"Trois **descripteurs de fichier** prédéfinis." },
-  { id:98, ch:5, tp:"Unix", q:"Comment passer des arguments à `main` ?", o:["Via `scanf`","`int main(int argc, char* argv[])`","Via `stdin`","Via `#define`"], c:1, ex:"`argc` = nombre d'args, `argv[]` = tableau de chaînes." },
-  { id:99, ch:5, tp:"Unix", q:"Retour de `main` si tout va bien ?", o:["1","-1","0","`EXIT_SUCCESS` uniquement"], c:2, ex:"Convention : `return 0` = **succès**." },
-  { id:100, ch:5, tp:"Pointeurs", q:"Pointeur de fonction se déclare :", o:["`int f()`","`int (*f)(int)`","`int *f(int)`","`func int f`"], c:1, ex:"`int (*f)(int)` déclare `f` comme pointeur vers fonction." },
-  { id:101, ch:5, tp:"Pointeurs", q:"La queue d'une liste chaînée contient :", o:["Une valeur","Un pointeur vers le prochain maillon","La taille de la liste","`NULL` toujours"], c:1, ex:"La queue = **pointeur** vers le maillon suivant (ou `NULL`)." },
-  { id:102, ch:5, tp:"Outils", q:"`valgrind` sert à :", o:["Compiler plus vite","Détecter fuites mémoire et accès invalides","Formater le code","Optimiser"], c:1, ex:"`valgrind` = analyse d'exécution pour les **bugs mémoire**." },
-  { id:103, ch:5, tp:"Outils", q:"L'option `-g` de `gcc` :", o:["Active les graphiques","Ajoute les infos debug pour `gdb`","Optimise","Mode graphique"], c:1, ex:"`-g` = informations de **débogage** pour `gdb`." },
-  { id:104, ch:5, tp:"Makefile", q:"Dans un Makefile, `$<` représente :", o:["La cible","La première dépendance (source)","Toutes les dépendances","Le compilateur"], c:1, ex:"`$<` = source, `$@` = cible." },
-  { id:105, ch:5, tp:"Unix", q:"`isatty(0)` renvoie vrai si :", o:["Le fichier existe","stdin est un terminal interactif","Le programme est compilé","Le fichier est vide"], c:1, ex:"`isatty(0)` → stdin connecté à un **terminal** ?" },
-  { id:106, ch:5, tp:"Fichiers", q:"Quelle fonction est formellement interdite ?", o:["`scanf`","`printf`","`gets`","`putchar`"], c:2, ex:"`gets` → **INTERDIT** (pas de contrôle de taille → buffer overflow)." },
+
   { id:107, ch:2, tp:"Contrôle", q:"Les `goto` sont :", o:["Recommandés","Très fortement déconseillés","Obligatoires","Inexistants en C"], c:1, ex:"**Fortement déconseillés** (cf. Dijkstra, 1968)." },
   { id:108, ch:1, tp:"Types", q:"Que fait `(int) y` ?", o:["Supprime `y`","Force la conversion en `int`","Copie `y`","Vérifie le type"], c:1, ex:"**Cast explicite** : force la conversion de type." },
   { id:109, ch:4, tp:"Allocation", q:"`realloc` permet de :", o:["Réallouer avec une nouvelle taille","Libérer la mémoire","Allouer sur la pile","Compresser la mémoire"], c:0, ex:"`realloc` **redimensionne** une zone mémoire existante." },
@@ -140,13 +122,9 @@ const FICHES = [
   { ch:4, title:"Pointeurs", content:"`int *p` : `p` pointe vers un `int`\n`&a` : adresse de `a` · `*p` : valeur pointée\n`p->champ` ≡ `(*p).champ`\nPassage par référence : `f(&x)`\n`NULL` : pointeur vers rien\n**JAMAIS** retourner `&variable_locale`" },
   { ch:4, title:"Pile · Tas · Allocation", content:"**STACK** : variables locales, taille fixe, automatique\n**HEAP** : allocation dynamique, géré par le dev\n`malloc(n)` alloue $n$ octets\n`calloc(nb, taille)` alloue + initialise à 0\n`realloc(ptr, taille)` redimensionne\n`free(ptr)` libère · Oubli → **fuite mémoire**" },
   { ch:4, title:"Pointeurs & Tableaux", content:"`tab[i]` ≡ `*(tab+i)`\nEn argument : `int tab[]` ≡ `int *tab`\n`sizeof(tableau)` = taille totale\n`sizeof(pointeur)` = 8 (64 bits)\nArithmétique : `p+1` avance de `sizeof(*p)`\nTableau = adresse fixe · Pointeur = modifiable" },
-  { ch:5, title:"Préprocesseur", content:"`#define NOM valeur` macro simple\n`#define F(X) ((X)*(X))` macro avec args\n**Parenthèses** essentielles !\nRemplacement textuel, **PAS** une fonction\n`#` transforme l'arg en chaîne\nMacros prédéfinies : `__LINE__`, `__FILE__`, `__DATE__`\n`#include <stdio.h>` inclusion de headers" },
-  { ch:5, title:"Entrées/Sorties fichiers", content:"`FILE* f = fopen(nom, mode)`\nModes : `\"r\"` lecture · `\"w\"` écriture · `\"a\"` ajout\n`fclose(f)` fermer\n`fgetc`/`fputc` : caractère par caractère\n`fgets`/`fputs` : ligne par ligne\n`fprintf`/`fscanf` : formaté dans fichier\n`sprintf`/`sscanf` : formaté dans chaîne\n`gets` : **INTERDIT** !" },
-  { ch:5, title:"Unix & Outils", content:"`argc`, `argv` : arguments de `main`\n`return 0` succès · autre = erreur\n`stdin`/`stdout`/`stderr` : flux standards\n`isatty(0)` : est-ce un terminal ?\nPipes : `prog1 | prog2`\n`man 3 printf` : documentation\n`gdb` débuggeur (`-g` à la compilation)\n`valgrind` détecte fuites mémoire" },
-  { ch:5, title:"Pointeurs de fonctions · Arbres", content:"`int (*f)(int)` : pointeur de fonction\n`typedef int (*app)(int)` : alias de type\nListe chaînée : tête + pointeur vers la queue\nArbre : racine + fils gauche + fils droit\n`malloc` pour créer les nœuds\n`free` récursif pour libérer" },
 ];
 
-const CH = { 1:"Présentation du langage", 2:"Types & contrôle avancés", 3:"Codage & mémoire", 4:"Pointeurs & mémoire", 5:"Unix & compléments" };
+const CH = { 1:"Présentation du langage", 2:"Types & contrôle avancés", 3:"Codage & mémoire", 4:"Pointeurs & mémoire" };
 
 // ── THEMES ───────────────────────────────────────────────────────────────────
 const T = {
