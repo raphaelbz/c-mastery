@@ -289,7 +289,11 @@ function useSpring(targetValue, config = { stiffness: 300, damping: 30 }) {
 // APP
 // ══════════════════════════════════════════════════════════════════════════════
 export default function App() {
-  const [dk, setDk] = useState(() => window.matchMedia?.("(prefers-color-scheme:dark)").matches ?? false);
+  const [dk, setDk] = useState(() => {
+    try { const s = localStorage.getItem("c_dark"); if (s !== null) return s === "1"; } catch {}
+    return window.matchMedia?.("(prefers-color-scheme:dark)").matches ?? false;
+  });
+  useEffect(() => { try { localStorage.setItem("c_dark", dk ? "1" : "0"); } catch {} }, [dk]);
   const [view, setView] = useState("home");
   const [cfg, setCfg] = useState(null);
   const [transition, setTransition] = useState(false);
@@ -305,7 +309,8 @@ export default function App() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+        html { font-size: 16px; -webkit-text-size-adjust: 100%; background: ${th.bg}; }
+        body { background: ${th.bg}; min-height: 100vh; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', system-ui, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
         @keyframes fadeUp { from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)} }
         @keyframes fadeIn { from{opacity:0}to{opacity:1} }
